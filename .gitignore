@@ -1,0 +1,81 @@
+# Environment / secrets
+.env
+.env.*
+!.env.example
+
+# IDEs / editors
+.vscode/
+.idea/
+*.user
+*.userprefs
+*.suo
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Logs
+*.log
+logs/
+
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Build / distribution
+dist/
+build/
+out/
+release/
+*.zip
+
+# Temporary / cache
+.cache/
+.temp/
+tmp/
+temp/
+
+# Coverage
+coverage/
+
+# Unity
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Bb]uild/
+[Bb]uilds/
+[Ll]ogs/
+[Uu]ser[Ss]ettings/
+*.csproj
+*.unityproj
+*.sln
+*.suo
+
+# Unreal Engine
+Binaries/
+DerivedDataCache/
+Intermediate/
+Saved/
+
+# Godot
+.godot/
+export.cfg
+
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/
+
+# C/C++
+*.obj
+*.o
+*.so
+*.dll
+*.dylib
+*.exe

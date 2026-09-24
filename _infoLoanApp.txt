@@ -1,0 +1,232 @@
+Yes — if by “loan sold” you mean the original loan principal 
+L
+, with:
+
+L
+ = loan amount
+
+r
+ = fixed annual interest rate (%)
+
+n
+ = number of monthly installments
+
+monthly interest rate 
+i
+=
+r
+12
+×
+100
+
+then there are two different formulas depending on what you mean by “equal.”
+
+A) Equal total installment every month
+This is the standard amortizing loan: each monthly payment is the same, but the interest portion decreases while the principal portion increases.
+
+P
+=
+L
+i
+(
+1
++
+i
+)
+n
+(
+1
++
+i
+)
+n
+−
+1
+
+where
+
+i
+=
+r
+1200
+
+So:
+
+P
+=
+L
+r
+1200
+(
+1
++
+r
+1200
+)
+n
+(
+1
++
+r
+1200
+)
+n
+−
+1
+
+Total paid:
+
+T
+=
+n
+P
+
+Total interest:
+
+I
+=
+T
+−
+L
+
+B) Equal credit/principal repayment every month
+Here the principal portion is fixed:
+
+C
+=
+L
+n
+
+Interest is calculated on the remaining balance, so the total installment decreases every month.
+
+For month 
+k
+:
+
+P
+k
+=
+L
+n
++
+L
+(
+1
+−
+k
+−
+1
+n
+)
+i
+
+or equivalently:
+
+P
+k
+=
+L
+n
++
+(
+L
+−
+(
+k
+−
+1
+)
+L
+n
+)
+i
+
+The first payment is:
+
+P
+1
+=
+L
+n
++
+L
+i
+
+and the final payment is:
+
+P
+n
+=
+L
+n
++
+L
+n
+i
+
+Total interest over the entire loan:
+
+I
+=
+L
+ 
+i
+ 
+n
++
+1
+2
+
+and therefore total paid:
+
+T
+=
+L
++
+L
+ 
+i
+ 
+n
++
+1
+2
+
+Simple example
+If 
+L
+=
+10
+,
+000
+, annual interest 
+r
+=
+12
+%
+, and 
+n
+=
+12
+:
+
+Monthly rate 
+i
+=
+1
+%
+
+A: same total payment every month
+
+B: same principal repayment 
+=
+10
+,
+000
+/
+12
+=
+833.33
+ every month, while interest decreases each month.
+
+So A = equal total installments, while B = equal principal/credit repayment.

@@ -1,0 +1,156 @@
+* { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f5f7fb;
+      color: #172033;
+    }
+
+    .container {
+      max-width: 850px;
+      margin: 40px auto;
+      padding: 20px;
+    }
+
+    h1 {
+      margin-bottom: 6px;
+    }
+
+    .subtitle {
+      color: #667085;
+      margin-bottom: 25px;
+    }
+
+    .card {
+      background: white;
+      border: 1px solid #e4e7ec;
+      border-radius: 14px;
+      padding: 22px;
+      margin-bottom: 18px;
+    }
+
+    .inputs {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 15px;
+    }
+
+    label {
+      display: block;
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 7px;
+    }
+
+    input {
+      width: 100%;
+      padding: 11px 12px;
+      border: 1px solid #d0d5dd;
+      border-radius: 8px;
+      font-size: 16px;
+    }
+
+    .options {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 20px;
+    }
+
+    .option {
+      border: 2px solid #e4e7ec;
+      border-radius: 12px;
+      padding: 16px;
+      cursor: pointer;
+      transition: .15s;
+    }
+
+    .option:hover {
+      border-color: #98a2b3;
+    }
+
+    .option.selected {
+      border-color: #2563eb;
+      background: #eff6ff;
+    }
+
+    .option strong {
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    .option small {
+      color: #667085;
+    }
+
+    button {
+      width: 100%;
+      margin-top: 18px;
+      padding: 13px;
+      border: 0;
+      border-radius: 9px;
+      background: #2563eb;
+      color: white;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .results {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+    }
+
+    .result {
+      background: #f8fafc;
+      border-radius: 10px;
+      padding: 15px;
+    }
+
+    .result span {
+      display: block;
+      color: #667085;
+      font-size: 12px;
+      margin-bottom: 6px;
+    }
+
+    .result strong {
+      font-size: 19px;
+    }
+
+    .schedule {
+      overflow-x: auto;
+      margin-top: 18px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+    }
+
+    th, td {
+      padding: 9px;
+      border-bottom: 1px solid #eaecf0;
+      text-align: right;
+    }
+
+    th:first-child,
+    td:first-child {
+      text-align: left;
+    }
+
+    th {
+      color: #667085;
+      font-size: 12px;
+    }
+
+    @media (max-width: 650px) {
+      .inputs,
+      .options,
+      .results {
+        grid-template-columns: 1fr;
+      }
+    }

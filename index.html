@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Loan Calculator</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.8.2/jspdf.plugin.autotable.min.js"></script>
+
+  <script src="index.js" defer></script>
+
+</head>
+
+<body>
+
+<div class="container">
+
+  <h1>Loan Calculator</h1>
+  <div class="subtitle">
+    Compare equal total installments vs. equal principal repayment.
+  </div>
+
+  <div class="card">
+
+    <div class="inputs">
+      <div>
+        <label>Loan Amount</label>
+        <input id="loan" type="number" value="10000" min="1" max="1000000" step="1" required>
+      </div>
+
+      <div>
+        <label>Annual Interest (%)</label>
+        <input id="rate" type="number" value="12.00" min="0.01" step="0.01" required>
+      </div>
+
+      <div>
+        <label>Number of Months</label>
+	<input id="months" type="number" value="12" min="1" max="420" step="1" required>
+
+      </div>
+<div>
+  <label>Balance Fee (%)</label>
+  <input
+    id="balanceFee"
+    type="number"
+    value="0"
+    min="0"
+    step="0.01"
+    required
+  >
+</div>
+
+<div>
+  <label>Fixed Monthly Fee</label>
+  <input
+    id="monthlyFee"
+    type="number"
+    value="0"
+    min="0"
+    step="0.01"
+    required
+  >
+</div>
+
+    </div>
+
+    <div class="options">
+
+      <div class="option selected" data-type="A">
+        <strong>A — Equal Total Installments</strong>
+        <small>
+          Same payment every month. Interest decreases while principal increases.
+        </small>
+      </div>
+
+      <div class="option" data-type="B">
+        <strong>B — Equal Principal</strong>
+        <small>
+          Same principal every month. Total installment decreases over time.
+        </small>
+      </div>
+
+    </div>
+
+    <div class="buttons">
+  	<button id="calculate">Calculate</button>
+  	<button id="exportPdf" type="button">Export PDF</button>
+    </div>
+
+
+  </div>
+
+
+  <div class="card">
+
+    <h2 id="resultTitle">Option A — Equal Total Installments</h2>
+
+    <div class="results">
+
+      <div class="result">
+        <span>Monthly Rate</span>
+        <strong id="monthlyRate">-</strong>
+      </div>
+
+      <div class="result">
+        <span>Monthly Payment</span>
+        <strong id="payment">-</strong>
+      </div>
+
+      <div class="result">
+        <span>Total Interest</span>
+        <strong id="interest">-</strong>
+      </div>
+
+      <div class="result">
+        <span>Total Paid</span>
+        <strong id="totalPaid">-</strong>
+      </div>
+
+      <div class="result">
+        <span>Principal</span>
+        <strong id="principal">-</strong>
+      </div>
+
+      <div class="result">
+        <span>First Payment</span>
+        <strong id="firstPayment">-</strong>
+      </div>
+
+      <div class="result">
+        <span>Last Payment</span>
+        <strong id="lastPayment">-</strong>
+      </div>
+
+      <div class="result">
+        <span>Months</span>
+        <strong id="totalMonths">-</strong>
+      </div>
+<div class="result">
+  <span>Total Balance Fees</span>
+  <strong id="totalBalanceFees">-</strong>
+</div>
+
+<div class="result">
+  <span>Total Fixed Fees</span>
+  <strong id="totalMonthlyFees">-</strong>
+</div>
+
+<div class="result">
+  <span>Total Fees</span>
+  <strong id="totalFees">-</strong>
+</div>
+
+
+    </div>
+
+    <div class="schedule">
+      <table>
+        <thead>
+  	   <tr>
+    		<th>Month</th>
+    		<th>Principal</th>
+    		<th>Interest</th>
+    		<th>Balance Fee</th>
+    		<th>Fixed Fee</th>
+    		<th>Payment</th>
+    		<th>Balance</th>
+  	   </tr>
+	</thead>
+
+        <tbody id="schedule"></tbody>
+      </table>
+    </div>
+
+  </div>
+
+</div>
+
+</body>
+</html>
