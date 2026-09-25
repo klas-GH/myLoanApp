@@ -30,6 +30,61 @@
       margin-bottom: 18px;
     }
 
+    @media (max-width: 400px) {
+      .card {
+        padding: 4px;
+        margin-bottom: 3px;
+        border-radius: 10px;
+      }
+      .inputs {
+        gap: 4px;
+      }
+      .options {
+        margin-top: 3px;
+        gap: 2px;
+      }
+      .option {
+        padding: 4px 6px;
+        border-radius: 8px;
+      }
+      .option small {
+        display: none;
+      }
+      .buttons {
+        margin-top: 3px;
+        display: flex;
+        gap: 4px;
+      }
+      .buttons button {
+        flex: 1;
+        padding: 6px;
+        font-size: 11px;
+        border-radius: 6px;
+      }
+      label {
+        font-size: 8px;
+        margin-bottom: 1px;
+        font-weight: 600;
+      }
+      input {
+        padding: 5px 6px;
+        font-size: 11px;
+        border-radius: 6px;
+      }
+      h1 {
+        font-size: 20px;
+        margin-bottom: 3px;
+      }
+      .subtitle {
+        font-size: 12px;
+        margin-bottom: 12px;
+      }
+      .container {
+        padding: 8px;
+        margin: 10px auto;
+      }
+    }
+
     .inputs {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -64,10 +119,20 @@
       padding: 16px;
       cursor: pointer;
       transition: .15s;
+      background: white;
+      text-align: left;
+      width: 100%;
+      font: inherit;
+      color: inherit;
     }
 
     .option:hover {
       border-color: #98a2b3;
+    }
+
+    .option:focus-visible {
+      outline: 2px solid #2563eb;
+      outline-offset: 2px;
     }
 
     .option.selected {
@@ -143,14 +208,34 @@
     }
 
     th {
-      color: #667085;
+      background: #2563eb;
+      color: white;
       font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+    }
+
+    tbody tr:nth-child(even) {
+      background: #f8fafc;
+    }
+
+    tbody tr:hover {
+      background: #f1f5f9;
     }
 
     @media (max-width: 650px) {
-      .inputs,
+      .inputs {
+        grid-template-columns: repeat(2, 1fr);
+      }
       .options,
       .results {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 400px) {
+      .inputs {
         grid-template-columns: 1fr;
       }
     }

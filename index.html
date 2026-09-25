@@ -5,10 +5,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Loan Calculator</title>
   <link rel="stylesheet" href="styles.css">
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#2563eb">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="LoanCalc">
+  <link rel="apple-touch-icon" href="icon-192.svg">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.8.2/jspdf.plugin.autotable.min.js"></script>
 
   <script src="index.js" defer></script>
+
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('sw.js');
+    }
+  </script>
 
 </head>
 
@@ -65,21 +77,21 @@
 
     </div>
 
-    <div class="options">
+    <div class="options" role="radiogroup" aria-label="Repayment option">
 
-      <div class="option selected" data-type="A">
+      <button class="option selected" data-type="A" role="radio" aria-checked="true" tabindex="0">
         <strong>A — Equal Total Installments</strong>
         <small>
           Same payment every month. Interest decreases while principal increases.
         </small>
-      </div>
+      </button>
 
-      <div class="option" data-type="B">
+      <button class="option" data-type="B" role="radio" aria-checked="false" tabindex="-1">
         <strong>B — Equal Principal</strong>
         <small>
           Same principal every month. Total installment decreases over time.
         </small>
-      </div>
+      </button>
 
     </div>
 
