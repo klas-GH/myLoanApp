@@ -38,6 +38,7 @@
       }
       .inputs {
         gap: 2px;
+        grid-template-columns: 1fr;
       }
       .options {
         margin-top: 0;
@@ -288,12 +289,6 @@
       }
       .options,
       .results {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    @media (max-width: 390px) {
-      .inputs {
         grid-template-columns: 1fr;
       }
     }
