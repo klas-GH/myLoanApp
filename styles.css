@@ -50,6 +50,9 @@
       .option small {
         display: none;
       }
+      .option strong {
+        margin-bottom: 2px;
+      }
       .buttons {
         margin-top: 3px;
         display: flex;
@@ -77,11 +80,11 @@
       }
       .subtitle {
         font-size: 12px;
-        margin-bottom: 12px;
+        margin-bottom: 8px;
       }
       .container {
-        padding: 8px;
-        margin: 10px auto;
+        padding: 4px;
+        margin: 4px auto;
       }
     }
 
