@@ -5,6 +5,7 @@ const balanceFeeInput = document.getElementById("balanceFee");
 const monthlyFeeInput = document.getElementById("monthlyFee");
 
 const calculateButton = document.getElementById("calculate");
+const pdfFormatSelect = document.getElementById("pdfFormat");
 
 let selectedType = "A";
 
@@ -288,7 +289,11 @@ document.getElementById("exportPdf").addEventListener("click", () => {
   // -----------------------------
 
   const { jsPDF } = window.jspdf;
-  const doc = new jsPDF();
+  const pdfFormat = pdfFormatSelect.value;
+  const doc = new jsPDF({ unit: "mm", format: pdfFormat });
+
+  const pageWidth = doc.internal.pageSize.getWidth();
+  const pageHeight = doc.internal.pageSize.getHeight();
 
   const loan = Number(loanInput.value);
   const annualRate = Number(rateInput.value);
@@ -321,7 +326,7 @@ document.getElementById("exportPdf").addEventListener("click", () => {
   // -----------------------------
 
   doc.setFillColor(...blue);
-  doc.rect(0, 0, 210, 32, "F");
+  doc.rect(0, 0, pageWidth, 32, "F");
 
   doc.setTextColor(...white);
   doc.setFont("helvetica", "bold");
@@ -353,7 +358,7 @@ document.getElementById("exportPdf").addEventListener("click", () => {
 
   doc.text(
     `Generated: ${generatedDate}`,
-    196,
+    pageWidth - 6,
     24,
     { align: "right" }
   );
@@ -376,7 +381,7 @@ document.getElementById("exportPdf").addEventListener("click", () => {
   doc.roundedRect(
     14,
     51,
-    182,
+    pageWidth - 28,
     58,
     3,
     3,
@@ -580,7 +585,7 @@ document.getElementById("exportPdf").addEventListener("click", () => {
     doc.line(
       14,
       pageHeight - 15,
-      196,
+      pageWidth - 14,
       pageHeight - 15
     );
 
@@ -598,7 +603,7 @@ document.getElementById("exportPdf").addEventListener("click", () => {
 
     doc.text(
       `Page ${page} of ${pageCount}`,
-      196,
+      pageWidth - 6,
       pageHeight - 8,
       { align: "right" }
     );
@@ -612,8 +617,8 @@ document.getElementById("exportPdf").addEventListener("click", () => {
 
   const filename =
     selectedType === "A"
-      ? "loan-installments-option-A.pdf"
-      : "loan-installments-option-B.pdf";
+      ? `loan-installments-option-A-${pdfFormat}.pdf`
+      : `loan-installments-option-B-${pdfFormat}.pdf`;
 
   doc.save(filename);
 });
