@@ -44,14 +44,14 @@
         gap: 0;
       }
       .option {
-        padding: 1px 3px;
-        border-radius: 5px;
-      }
-      .option small {
-        display: none;
+        padding: 0;
+        border-radius: 4px;
+        font-size: 11px;
       }
       .option strong {
+        display: block;
         margin-bottom: 1px;
+        font-size: 10px;
       }
       .buttons {
         margin-top: 0;
