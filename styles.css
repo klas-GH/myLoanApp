@@ -284,6 +284,10 @@
     }
 
     @media (max-width: 650px) {
+      .container {
+        margin: 10px auto;
+        padding: 8px;
+      }
       .card {
         padding: 14px;
         margin-bottom: 12px;
