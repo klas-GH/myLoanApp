@@ -1,10 +1,13 @@
 const CACHE_NAME = 'loan-calculator-v1';
+const BASE_PATH = '/myLoanApp/';
 const ASSETS = [
-  '/',
-  '/index.html',
-  '/index.js',
-  '/styles.css',
-  '/manifest.json',
+  BASE_PATH,
+  BASE_PATH + 'index.html',
+  BASE_PATH + 'index.js',
+  BASE_PATH + 'styles.css',
+  BASE_PATH + 'manifest.json',
+  BASE_PATH + 'icon-192.svg',
+  BASE_PATH + 'icon-512.svg',
   'https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js',
   'https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.8.2/jspdf.plugin.autotable.min.js'
 ];
@@ -43,6 +46,7 @@ self.addEventListener('fetch', (event) => {
     return;
   }
 
+  // For local assets, try cache first, then network
   event.respondWith(
     caches.match(event.request).then((response) =>
       response || fetch(event.request).then((r) => {
