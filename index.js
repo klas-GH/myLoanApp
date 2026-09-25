@@ -5,7 +5,38 @@ const balanceFeeInput = document.getElementById("balanceFee");
 const monthlyFeeInput = document.getElementById("monthlyFee");
 
 const calculateButton = document.getElementById("calculate");
-const pdfFormatSelect = document.getElementById("pdfFormat");
+let selectedFormat = "a4";
+
+// PDF format option selection
+document.querySelectorAll(".pdf-format").forEach(option => {
+  option.addEventListener("click", () => {
+    document.querySelectorAll(".pdf-format").forEach(x => {
+      x.classList.remove("selected");
+      x.setAttribute("aria-checked", "false");
+      x.setAttribute("tabindex", "-1");
+    });
+    option.classList.add("selected");
+    option.setAttribute("aria-checked", "true");
+    option.setAttribute("tabindex", "0");
+    option.focus();
+    selectedFormat = option.dataset.format;
+  });
+
+  option.addEventListener("keydown", (e) => {
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
+      document.querySelectorAll(".pdf-format").forEach(x => {
+        x.classList.remove("selected");
+        x.setAttribute("aria-checked", "false");
+        x.setAttribute("tabindex", "-1");
+      });
+      option.classList.add("selected");
+      option.setAttribute("aria-checked", "true");
+      option.setAttribute("tabindex", "0");
+      selectedFormat = option.dataset.format;
+    }
+  });
+});
 
 let selectedType = "A";
 
@@ -289,8 +320,7 @@ document.getElementById("exportPdf").addEventListener("click", () => {
   // -----------------------------
 
   const { jsPDF } = window.jspdf;
-  const pdfFormat = pdfFormatSelect.value;
-  const doc = new jsPDF({ unit: "mm", format: pdfFormat });
+  const doc = new jsPDF({ unit: "mm", format: selectedFormat });
 
   const pageWidth = doc.internal.pageSize.getWidth();
   const pageHeight = doc.internal.pageSize.getHeight();
@@ -617,8 +647,8 @@ document.getElementById("exportPdf").addEventListener("click", () => {
 
   const filename =
     selectedType === "A"
-      ? `loan-installments-option-A-${pdfFormat}.pdf`
-      : `loan-installments-option-B-${pdfFormat}.pdf`;
+      ? `loan-installments-option-A-${selectedFormat}.pdf`
+      : `loan-installments-option-B-${selectedFormat}.pdf`;
 
   doc.save(filename);
 });

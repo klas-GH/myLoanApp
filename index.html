@@ -95,10 +95,13 @@
 
     </div>
 
-    <select id="pdfFormat" class="format-select">
-      <option value="a4">A4</option>
-      <option value="letter">US Letter</option>
-    </select>
+    <div class="pdf-format-selector">
+      <div class="pdf-format-label">Export PDF as:</div>
+      <div class="options" role="radiogroup" aria-label="PDF paper size">
+        <button class="option pdf-format selected" data-format="a4" role="radio" aria-checked="true" tabindex="0">A4</button>
+        <button class="option pdf-format" data-format="letter" role="radio" aria-checked="false" tabindex="-1">US Letter</button>
+      </div>
+    </div>
 
     <div class="buttons">
   	<button id="calculate">Calculate</button>
