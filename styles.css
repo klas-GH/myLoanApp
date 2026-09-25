@@ -30,7 +30,7 @@
       margin-bottom: 18px;
     }
 
-    @media (max-width: 390px) {
+    @media (max-width: 374px) {
       .card {
         padding: 2px;
         margin-bottom: 2px;
