@@ -297,6 +297,9 @@
         gap: 8px;
         margin-top: 14px;
       }
+      .results {
+        grid-template-columns: repeat(2, 1fr);
+      }
       .option {
         padding: 12px 14px;
         font-size: 14px;
