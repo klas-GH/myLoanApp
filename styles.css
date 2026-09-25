@@ -150,32 +150,27 @@
 }
 
     .pdf-format-input {
-      grid-column: 1 / -1;
-      margin-top: 12px;
-      padding: 12px 14px;
-      border: 1px solid #e4e7ec;
-      border-radius: 10px;
-      background: #f8fafc;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
     }
 
     .pdf-format-label {
       font-size: 13px;
       font-weight: 600;
-      margin-bottom: 8px;
-      display: block;
       color: #334155;
     }
 
     .pdf-format-options {
       display: flex;
-      gap: 14px;
+      gap: 8px;
+      font-size: 13px;
     }
 
     .pdf-format-options label {
       display: flex;
       align-items: center;
-      gap: 6px;
-      font-size: 14px;
+      gap: 4px;
       cursor: pointer;
     }
 
