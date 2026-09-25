@@ -153,7 +153,7 @@
       display: block;
     }
 
-    .pdf-format-group label:first-child {
+    .pdf-format-group > label:first-child {
       display: block;
       font-size: 13px;
       font-weight: 600;
