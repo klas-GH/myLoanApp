@@ -40,21 +40,21 @@
         gap: 4px;
       }
       .options {
-        margin-top: 1px;
+        margin-top: 0;
         gap: 0;
       }
       .option {
-        padding: 2px 4px;
-        border-radius: 6px;
+        padding: 1px 3px;
+        border-radius: 5px;
       }
       .option small {
         display: none;
       }
       .option strong {
-        margin-bottom: 2px;
+        margin-bottom: 1px;
       }
       .buttons {
-        margin-top: 1px;
+        margin-top: 0;
         display: flex;
         gap: 2px;
       }
