@@ -149,16 +149,13 @@
       color: #667085;
 }
 
-    .pdf-format-input {
+    .pdf-format-group {
       display: flex;
       flex-direction: column;
       gap: 6px;
-      padding: 9px 10px;
-      border: 1px solid #d0d5dd;
-      border-radius: 8px;
     }
 
-    .pdf-format-label {
+    .pdf-format-group label:first-child {
       font-size: 13px;
       font-weight: 600;
       color: #334155;
@@ -168,6 +165,10 @@
       display: flex;
       gap: 8px;
       font-size: 13px;
+      padding: 9px 10px;
+      border: 1px solid #d0d5dd;
+      border-radius: 8px;
+      background: white;
     }
 
     .pdf-format-options label {
