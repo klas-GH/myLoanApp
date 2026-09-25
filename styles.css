@@ -156,26 +156,31 @@
     }
 
     .pdf-format-group label:first-child {
+      display: block;
       font-size: 13px;
       font-weight: 600;
       color: #334155;
+      margin-bottom: 7px;
     }
 
     .pdf-format-options {
       display: flex;
+      align-items: center;
       gap: 8px;
       font-size: 13px;
       padding: 9px 10px;
       border: 1px solid #d0d5dd;
       border-radius: 8px;
       background: white;
+      min-height: 42px;
     }
 
     .pdf-format-options label {
-      display: flex;
+      display: inline-flex;
       align-items: center;
       gap: 4px;
       cursor: pointer;
+      margin: 0;
     }
 
     .pdf-format-options input[type="radio"] {
