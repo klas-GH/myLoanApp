@@ -175,11 +175,11 @@
     }
 
     .pdf-format-options label {
-      display: inline-flex !important;
+      display: inline-flex;
       align-items: center;
       gap: 4px;
       cursor: pointer;
-      margin: 0 !important;
+      margin: 0;
       flex-shrink: 0;
     }
 
