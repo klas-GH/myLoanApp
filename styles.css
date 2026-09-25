@@ -175,7 +175,7 @@
     }
 
     .pdf-format-options label {
-      display: inline-flex;
+      display: flex;
       align-items: center;
       gap: 4px;
       cursor: pointer;
