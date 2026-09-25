@@ -158,10 +158,10 @@
 
       .pdf-format-group > label:first-child {
         display: block;
-        font-size: 11px;
+        font-size: 13px;
         font-weight: 600;
         color: #334155;
-        margin-bottom: 2px;
+        margin-bottom: 7px;
       }
 
     .pdf-format-options {
