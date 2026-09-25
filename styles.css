@@ -150,12 +150,11 @@
 }
 
     .pdf-format-group {
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
+      display: block;
     }
 
     .pdf-format-group label:first-child {
+      display: block;
       font-size: 13px;
       font-weight: 600;
       color: #334155;
@@ -163,7 +162,7 @@
     }
 
     .pdf-format-options {
-      display: inline-flex;
+      display: flex;
       align-items: center;
       gap: 12px;
       font-size: 13px;
