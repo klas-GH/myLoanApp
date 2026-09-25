@@ -7,34 +7,10 @@ const monthlyFeeInput = document.getElementById("monthlyFee");
 const calculateButton = document.getElementById("calculate");
 let selectedFormat = "a4";
 
-// PDF format option selection
-document.querySelectorAll(".pdf-format").forEach(option => {
-  option.addEventListener("click", () => {
-    document.querySelectorAll(".pdf-format").forEach(x => {
-      x.classList.remove("selected");
-      x.setAttribute("aria-checked", "false");
-      x.setAttribute("tabindex", "-1");
-    });
-    option.classList.add("selected");
-    option.setAttribute("aria-checked", "true");
-    option.setAttribute("tabindex", "0");
-    option.focus();
-    selectedFormat = option.dataset.format;
-  });
-
-  option.addEventListener("keydown", (e) => {
-    if (e.key === "Enter" || e.key === " ") {
-      e.preventDefault();
-      document.querySelectorAll(".pdf-format").forEach(x => {
-        x.classList.remove("selected");
-        x.setAttribute("aria-checked", "false");
-        x.setAttribute("tabindex", "-1");
-      });
-      option.classList.add("selected");
-      option.setAttribute("aria-checked", "true");
-      option.setAttribute("tabindex", "0");
-      selectedFormat = option.dataset.format;
-    }
+// PDF format selection
+document.querySelectorAll('input[name="pdfFormat"]').forEach(radio => {
+  radio.addEventListener("change", () => {
+    selectedFormat = radio.value;
   });
 });
 
