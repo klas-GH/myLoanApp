@@ -1,4 +1,4 @@
-const CACHE_NAME = 'loan-calculator-v1';
+const CACHE_NAME = 'loan-calculator-v2';
 const BASE_PATH = '/myLoanApp/';
 const ASSETS = [
   BASE_PATH,

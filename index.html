@@ -11,6 +11,15 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="default">
   <meta name="apple-mobile-web-app-title" content="LoanCalc">
   <link rel="apple-touch-icon" href="icon-192.svg">
+  <style>
+    #installBanner[hidden] { display: none; }
+    #installBanner { position: fixed; z-index: 1000; left: 50%; bottom: max(16px, env(safe-area-inset-bottom)); transform: translateX(-50%); width: min(520px, calc(100% - 24px)); display: flex; align-items: center; justify-content: space-between; gap: 14px; padding: 14px; border: 1px solid #bfdbfe; border-radius: 14px; background: #fff; color: #172033; box-shadow: 0 12px 36px #17203333; font: 14px Arial, sans-serif; }
+    #installBanner p { margin: 4px 0 0; color: #667085; }
+    #installBanner .install-actions { display: flex; gap: 8px; flex: 0 0 auto; }
+    #installBanner button { width: auto; margin: 0; padding: 9px 12px; font-size: 14px; }
+    #installBanner .install-later { background: #eef2f7; color: #172033; }
+    @media (max-width: 480px) { #installBanner { align-items: stretch; flex-direction: column; } #installBanner .install-actions button { flex: 1; } }
+  </style>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.8.2/jspdf.plugin.autotable.min.js"></script>
 
@@ -196,6 +205,53 @@
   </div>
 
 </div>
+
+<aside id="installBanner" role="region" aria-label="Install Loan Calculator" hidden>
+  <div><strong>Install Loan Calculator</strong><p>Use the calculator from your home screen.</p></div>
+  <div class="install-actions">
+    <button id="installLater" class="install-later" type="button">Not now</button>
+    <button id="installBtn" type="button">Install</button>
+  </div>
+</aside>
+
+<script>
+  (() => {
+    const banner = document.getElementById("installBanner");
+    let deferredPrompt = null;
+    let dismissed = false;
+    try { dismissed = localStorage.getItem("myLoanApp.installBannerDismissed") === "1"; } catch {}
+    const standalone = () =>
+      window.matchMedia?.("(display-mode: standalone)").matches ||
+      navigator.standalone === true;
+    const hide = () => { banner.hidden = true; };
+    const show = () => { banner.hidden = dismissed || standalone(); };
+    const dismiss = () => {
+      dismissed = true;
+      hide();
+      try { localStorage.setItem("myLoanApp.installBannerDismissed", "1"); } catch {}
+    };
+
+    document.getElementById("installBtn").addEventListener("click", () => {
+      if (!deferredPrompt) return;
+      const prompt = deferredPrompt;
+      deferredPrompt = null;
+      Promise.resolve(prompt.prompt()).catch(error => console.error("PWA install prompt failed:", error));
+      prompt.userChoice?.catch(error => console.error("PWA install choice failed:", error));
+      hide();
+    });
+    document.getElementById("installLater").addEventListener("click", dismiss);
+    window.addEventListener("beforeinstallprompt", event => {
+      event.preventDefault();
+      deferredPrompt = event;
+      show();
+    });
+    window.addEventListener("appinstalled", () => {
+      deferredPrompt = null;
+      hide();
+    });
+    if (standalone()) hide();
+  })();
+</script>
 
 </body>
 </html>
