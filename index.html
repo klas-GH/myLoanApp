@@ -206,6 +206,10 @@
 
 </div>
 
+<div id="versionFooter" style="text-align:center; color:#667085; font-size:12px; margin-top:16px; padding:8px;">
+  v1.2.0
+</div>
+
 <aside id="installBanner" role="region" aria-label="Install Loan Calculator" hidden>
   <div><strong>Install Loan Calculator</strong><p>Use the calculator from your home screen.</p></div>
   <div class="install-actions">
@@ -223,22 +227,45 @@
       window.matchMedia?.("(display-mode: standalone)").matches ||
       navigator.standalone === true;
     const hide = () => { banner.hidden = true; };
-    const show = () => { banner.hidden = dismissed || standalone(); };
+    const show = () => { 
+      if (!dismissed && !standalone() && deferredPrompt) {
+        banner.hidden = false;
+      }
+    };
     const dismiss = () => {
       dismissed = true;
       hide();
+      // Remember dismissal for 30 days
+      localStorage.setItem('installBannerDismissed', Date.now().toString());
     };
 
-    document.getElementById("installBtn").addEventListener("click", () => {
+    // Check if dismissed recently (30 days)
+    const lastDismissed = localStorage.getItem('installBannerDismissed');
+    if (lastDismissed && Date.now() - parseInt(lastDismissed) < 30 * 24 * 60 * 60 * 1000) {
+      dismissed = true;
+    }
+
+    document.getElementById("installBtn").addEventListener("click", async () => {
       if (!deferredPrompt) {
-        window.alert("Use the install icon near the address bar or choose your browser menu's app-install option. On iPhone or iPad, use Share > Add to Home Screen.");
+        // Fallback for browsers without beforeinstallprompt (iOS, Firefox, etc.)
+        const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+        if (isIOS) {
+          alert("To install: tap Share ▸ Add to Home Screen");
+        } else {
+          alert("Use your browser's menu: Install App / Add to Home Screen");
+        }
         return;
       }
-      const prompt = deferredPrompt;
-      deferredPrompt = null;
-      Promise.resolve(prompt.prompt()).catch(error => console.error("PWA install prompt failed:", error));
-      prompt.userChoice?.catch(error => console.error("PWA install choice failed:", error));
-      hide();
+      banner.hidden = true;
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      if (outcome === 'accepted') {
+        deferredPrompt = null;
+        hide();
+      } else {
+        // User dismissed, show banner again later
+        deferredPrompt = null;
+      }
     });
     document.getElementById("installLater").addEventListener("click", dismiss);
     window.addEventListener("beforeinstallprompt", event => {
@@ -249,6 +276,8 @@
     window.addEventListener("appinstalled", () => {
       deferredPrompt = null;
       hide();
+      dismissed = true;
+      localStorage.setItem('installBannerDismissed', Date.now().toString());
     });
     show();
     if (standalone()) hide();
